@@ -1,0 +1,25 @@
+name: Bug Report
+description: Report an issue or broken sensor
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: A quick description of the issue.
+    validations:
+      required: true
+  - type: input
+    id: location_id
+    attributes:
+      label: PlugShare Location ID
+      placeholder: "e.g., 2100897"
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Messages
+      description: Paste any relevant Home Assistant error logs here.
+      render: text

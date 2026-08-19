@@ -189,6 +189,8 @@ class PlugShareOutletSensor(PlugShareBaseSensor):
     def native_value(self):
         try:
             status = self.coordinator.data["stations"][0]["outlets"][self._outlet_index].get("status", "Unknown")
+            if status.upper() == "OUTOFORDER":
+                return "Out of order"
             return status.replace("_", " ").title()
         except (IndexError, KeyError):
             return "Unavailable"
