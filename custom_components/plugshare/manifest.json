@@ -1,0 +1,11 @@
+{
+  "domain": "plugshare",
+  "name": "PlugShare",
+  "codeowners": ["@nadeemsultan"],
+  "config_flow": true,
+  "documentation": "https://github.com/nadeemsultan/homeassistant-plugshare",
+  "issue_tracker": "https://github.com/nadeemsultan/homeassistant-plugshare/issues",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "version": "1.0.0"
+}

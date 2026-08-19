@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure PlugShare",
+        "description": "Enter the PlugShare Location ID (from the plugshare.com URL) to track.",
+        "data": {
+          "location_id": "Location ID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the PlugShare API.",
+      "invalid_location": "Invalid Location ID or station not found."
+    },
+    "abort": {
+      "already_configured": "This PlugShare location is already configured."
+    }
+  }
+}
