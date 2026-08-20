@@ -1,5 +1,5 @@
 """The PlugShare Integration."""
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 import logging
 import asyncio
 
@@ -35,7 +35,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 async with session.get(url, headers=headers) as response:
                     if response.status != 200:
                         raise UpdateFailed(f"PlugShare API error {response.status}: {await response.text()}")
-                    return await response.json()
+                    data = await response.json()
+                    data["_last_api_refresh"] = datetime.now(timezone.utc).isoformat()
+                    return data
         except Exception as err:
             raise UpdateFailed(f"Error communicating with PlugShare API: {err}")
 
