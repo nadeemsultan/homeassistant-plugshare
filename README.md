@@ -28,8 +28,7 @@ Each configured PlugShare station creates a primary device representing the loca
 ### Station Sensors
 | Entity | Entity ID pattern | Entity Category | Value | Description |
 |---|---|---|---|---|
-| Overall Status | `sensor.<station_name>_overall_status` | — | Text | Station operating status, such as `Available` or `Unknown`. |
-| Last API Refresh | `sensor.<station_name>_last_api_refresh` | Diagnostic | Timestamp | Time of the most recent successful PlugShare API poll. |
+| Overall Status | `sensor.<station_name>_overall_status` | — | Text | Station operating status, such as `Available` or `Unknown`. Includes a `last_api_refresh` attribute containing the timestamp of the most recent successful PlugShare API poll. |
 | Available Stalls | `sensor.<station_name>_available_stalls` | — | Number (`stalls`) | Currently open charging stalls. |
 | Occupied Stalls | `sensor.<station_name>_occupied_stalls` | — | Number (`stalls`) | Stalls actively charging or otherwise occupied. |
 | Charging Cost | `sensor.<station_name>_charging_cost` | — | Text | Tariff, hourly rate, or cost summary. |

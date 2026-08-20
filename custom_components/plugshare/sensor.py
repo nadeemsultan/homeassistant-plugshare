@@ -35,7 +35,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
     entities = [
         PlugShareMainStatusSensor(coordinator, location_id, device_info),
-        PlugShareApiRefreshSensor(coordinator, location_id, device_info),
         PlugShareAvailableStallsSensor(coordinator, location_id, device_info),
         PlugShareOccupiedStallsSensor(coordinator, location_id, device_info),
         PlugShareCostSensor(coordinator, location_id, device_info),
@@ -92,21 +91,8 @@ class PlugShareMainStatusSensor(PlugShareBaseSensor):
             "connector_types": d.get("connector_types"),
             "score": d.get("confidence"),
             "cost_description": d.get("cost_description"),
+            "last_api_refresh": d.get("_last_api_refresh"),
         }
-
-class PlugShareApiRefreshSensor(PlugShareBaseSensor):
-    """Timestamp of the most recent successful API refresh."""
-    def __init__(self, coordinator, location_id, device_info):
-        super().__init__(coordinator, location_id, device_info)
-        self._attr_name = "Last API Refresh"
-        self._attr_unique_id = f"plugshare_{location_id}_last_api_refresh"
-        self._attr_device_class = SensorDeviceClass.TIMESTAMP
-        self._attr_entity_category = EntityCategory.DIAGNOSTIC
-
-    @property
-    def native_value(self):
-        raw_ts = self.coordinator.data.get("_last_api_refresh")
-        return dt_util.parse_datetime(raw_ts) if raw_ts else None
 
 class PlugShareAvailableStallsSensor(PlugShareBaseSensor):
     """Available stalls counter."""
